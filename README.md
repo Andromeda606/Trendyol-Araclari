@@ -16,3 +16,4 @@ I can improve this much more, you can show the mistakes and what is wanted to be
 
 [Issues]: https://github.com/Andromeda606/Trendyol-Account-Generator/issues
 [python]: https://www.python.org/downloads/
+I am not responsible for bad transactions you did!
