@@ -8,7 +8,7 @@ A simple program that allows you to open trendyol accounts
 # Places to be arranged
 
 - install [python] from here
-- Run the main.py file. CHEERS
+- Write console``python main.py``
 
 I can improve this much more, you can show the mistakes and what is wanted to be done in the [Issues] section.
 
