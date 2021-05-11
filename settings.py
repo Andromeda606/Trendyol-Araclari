@@ -1,6 +1,11 @@
 import random
 import string
-import requests
+
+try:
+    import requests
+except:
+    exit("requests MODÜLÜ YÜKLÜ DEĞİL! \"pip install requests\" veya \"pip3 install requests\" yazarak "
+         "indirebilirsiniz.")
 
 
 def get_rand_token():
@@ -46,6 +51,9 @@ def new_account(mail,passw):
 
     response = requests.request("POST", url, json=payload, headers=headers)
     if response.status_code == 429:
-        print("HATA! IP BLOK YEDİNİZ!")
+        exit("HATA! IP niz geçici süreliğine kısıtlandı, ip değiştirmek için modemi kapat aç veya uçak modunu aç kapat yapabilirsin.")
     else:
-        print(response.text)
+        f = open("openedmails.txt", "a")
+        f.write(mail + ":" + passw + "\n")
+        f.close()
+        return response.text
