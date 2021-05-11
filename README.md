@@ -7,8 +7,6 @@ A simple program that allows you to open trendyol accounts
 
 # Places to be arranged
 
-- Type the list of mails to be opened in the mails.txt section, the example is included in the usage.
-- Go into main.py and change password from PASSWORD variable
 - install [python] from here
 - Run the main.py file. CHEERS
 
