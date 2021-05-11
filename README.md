@@ -1,17 +1,18 @@
-# Trendyol-Account-Generator
-Trendyol Account Generator via Python
+# Trendyol-Araçları
+Python ile yazılmış Trendyol araçları
 
-# What does that do?
-A simple program that allows you to open trendyol accounts
+# Bu tam olarak ne?
+Basitçe, hesap açmanızı ve kuponları sorgulamanızı sağlayan bir program
 
 
-# Places to be arranged
 
-- install [python] from here
-- Write console``python main.py``
+# Nasıl çalışır?
 
-I can improve this much more, you can show the mistakes and what is wanted to be done in the [Issues] section.
+- [Pythonu] indirin (Windows 10 kullanıcılarının Microsoft store üzerinden indirmesi çok daha iyi olur.)
+- Konsola``python main.py`` yazın. Bu kadar :)
+
+Sorununuz, sorunuz var ise [Issues] bölümünden yazabilirsiniz.
 
 [Issues]: https://github.com/Andromeda606/Trendyol-Account-Generator/issues
-[python]: https://www.python.org/downloads/
-I am not responsible for bad transactions you did!
+[Pythonu]: https://www.python.org/downloads/
+YAPACAĞINIZ KÖTÜ İŞLEMLERDEN HİÇBİR ŞEKİLDE SORUMLU DEĞİLİM!
