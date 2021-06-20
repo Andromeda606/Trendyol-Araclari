@@ -84,8 +84,7 @@ def new_account(mail, passw):
     response = requests.request("POST", url, json=payload, headers=headers)
 
     if response.status_code == 429:
-        airplane_change()
-        time.sleep(2)
+        print("HATA IP DEĞİŞTİRİN")
     else:
         if "Üye kaydetme başarılı." in response.text:
             f = open("openedmails.txt", "a")
