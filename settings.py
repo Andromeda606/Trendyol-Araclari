@@ -38,18 +38,31 @@ def random_str(length):
 
 
 def new_account(mail, passw):
-    url = "https://mobile.trendyol.com/secure/json/Register"
+    url = "https://loginapp.trendyol.com/register/user"
 
     payload = {
-        "IsConditionOfMembershipApproved": True,
-        "Email": mail,
-        "Gender": 1,
-        "IsProtectionOfPersonalDataApproved": True,
-        "Password": passw
+        "guestToken": "",
+        "preferences": [
+            {
+                "id": 0,
+                "isAccept": True
+            }
+        ],
+        "regulation": {
+            "isConditionOfMembershipApproved": True,
+            "isProtectionOfPersonalDataApproved": True
+        },
+        "user": {
+            "email": mail,
+            "gender": 2,
+            "password": passw,
+            "storeFrontId": "1",
+            "userType": "MEMBER"
+        }
     }
 
     headers = {
-        "Host": "mobile.trendyol.com",
+        "Host": "loginapp.trendyol.com",
         "X-Storefront-Id": "1",
         "X-Application-Id": "5",
         "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 7.1.1; ONEPLUS A5000 Build/NMF26X) Trendyol/5.10.3.521",
@@ -57,7 +70,6 @@ def new_account(mail, passw):
         "Platform": "Android",
         "Gender": "F",
         "Searchsegment": "31",
-        "Osversion": "7.1.1",
         "Deviceid": get_rand_token(),
         "Pid": get_rand_token(),
         "Sid": get_rand_token(),
@@ -65,7 +77,6 @@ def new_account(mail, passw):
         "Accept-Language": "tr-TR",
         "Uniqueid": random_str(16),
         "Content-Type": "application/json; charset=UTF-8",
-        "Content-Length": "150",
         "Accept-Encoding": "gzip, deflate",
         "Connection": "close"
     }
@@ -73,7 +84,8 @@ def new_account(mail, passw):
     response = requests.request("POST", url, json=payload, headers=headers)
 
     if response.status_code == 429:
-        exit("HATA! IP niz geçici süreliğine kısıtlandı, ip değiştirmek için modemi kapat aç veya uçak modunu aç kapat yapabilirsin.")
+        airplane_change()
+        time.sleep(2)
     else:
         if "Üye kaydetme başarılı." in response.text:
             f = open("openedmails.txt", "a")
