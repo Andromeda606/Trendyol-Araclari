@@ -86,7 +86,7 @@ def new_account(mail, passw):
     if response.status_code == 429:
         print("HATA IP DEĞİŞTİRİN")
     else:
-        if "Üye kaydetme başarılı." in response.text:
+        if "accessToken" in response.text:
             f = open("openedmails.txt", "a")
             f.write(mail + ":" + passw + "\n")
             f.close()
