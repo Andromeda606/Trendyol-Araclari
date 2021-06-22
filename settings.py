@@ -123,7 +123,7 @@ def favorite_item(id,bearer):
 
 
 def login(email, passw):
-    url = "https://auth.trendyol.com/login"
+    url = "https://loginapp.trendyol.com/auth/token"
 
     payload = {
         "guestToken": "",
