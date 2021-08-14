@@ -193,7 +193,7 @@ def loginMobile(email, passw):
     }
 
     response = requests.request("POST", url, json=payload, headers=headers)
-
+    print(response.text)
     return response.json()
 
 
