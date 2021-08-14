@@ -227,4 +227,5 @@ def get_cupons(bearer):
     response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
 
     return response.json()
+        
 
