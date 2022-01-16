@@ -3,12 +3,16 @@ import string
 
 import os
 import time
+from urllib.parse import urlparse
 
 try:
     import requests
 except:
+    os.system("python -m pip3 install requests")
     exit("requests MODÜLÜ YÜKLÜ DEĞİL! \"pip install requests\" veya \"pip3 install requests\" yazarak "
-         "indirebilirsiniz.")
+         "indirebilirsiniz. (Otomatik yüklemeyi denedi, önce tekrar çalıştırmayı deneyin)")
+
+
 
 def adb(code):
     os.system("adb " + code)
@@ -84,7 +88,7 @@ def new_account(mail, passw):
     response = requests.request("POST", url, json=payload, headers=headers)
 
     if response.status_code == 429:
-        print("HATA IP DEĞİŞTİRİN")
+        return "IPCHANGE"
     else:
         if "accessToken" in response.text:
             f = open("openedmails.txt", "a")
@@ -193,7 +197,9 @@ def loginMobile(email, passw):
     }
 
     response = requests.request("POST", url, json=payload, headers=headers)
-    print(response.text)
+    
+    if response.status_code == 429:
+        return "ERROR429"
     return response.json()
 
 
@@ -228,4 +234,58 @@ def get_cupons(bearer):
 
     return response.json()
         
+
+def go_save(id,bearer):
+    url = "https://browsingpublic-mdc.trendyol.com/mobile-zeus-zeussocial-service/zeus/mycollections/" + id + "/follow"
+
+    headers = {
+        'Host': "browsingpublic-mdc.trendyol.com",
+        'Authorization': "bearer " + bearer,
+        "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 7.1.1; ONEPLUS A5000 Build/NMF26X) Trendyol/5.10.3.521",
+        'Build': "5.10.3.521",
+        'Platform': "Android",
+        'Gender': "M",
+        'Searchsegment': "31",
+        'Osversion': "7.1.1",
+        "Deviceid": get_rand_token(),
+        "Pid": get_rand_token(),
+        "Sid": get_rand_token(),
+        "X-Features": "REBATE_ENABLED",
+        "Accept-Language": "tr-TR",
+        "Uniqueid": random_str(16),
+        'X-Storefront-Id': "1",
+        'X-Application-Id': "5",
+        'Content-Length': "0",
+        'Accept-Encoding': "gzip, deflate",
+        'X-Newrelic-Id': "VQQAUV9aGwEFXVNVBgk=",
+        'Connection': "close"
+    }
+
+    response = requests.request("POST", url, headers=headers)
+    print(response.text)
+    print(response.status_code)
+
+def query_to_dict(query: str) -> dict:
+    returned = {}
+    for x in query.split("&"):
+        element = x.split("=")
+        returned[element[0]] = element[1]
+    return returned
+
+def get_collection_id(link) -> str:
+    # ID yi fark etmemi sağlayan "do6an" adlı Github kullanıcısına teşekkürler.
+
+    if "ty.gl" in link:
+        url = urlparse(requests.get(link).url)
+        querys = query_to_dict(url.query)
+        if "link_collectionID" in querys:
+            return querys["link_collectionID"]
+        elif "utm_campaign" in querys:
+            return querys["utm_campaign"]
+        else:
+            path = url.path
+            return path[path.index("k-") + 2:]
+    elif "k-" in link:
+        path = urlparse(link).path
+        return path[path.index("k-") + 2:]
 
