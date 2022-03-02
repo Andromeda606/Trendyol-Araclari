@@ -151,3 +151,4 @@ def start():
             getcoupon()
         elif status == "3":
             send_save()
+start()
