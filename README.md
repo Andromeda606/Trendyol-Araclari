@@ -2,7 +2,7 @@
 Python ile yazılmış Trendyol araçları
 
 # Bu tam olarak ne?
-Basitçe, hesap açmanızı ve kuponları sorgulamanızı sağlayan bir program
+Basitçe, hesap açmanızı ve kuponları sorgulamanızı sağlayan ücretsiz bir program.
 
 
 
@@ -14,6 +14,10 @@ Basitçe, hesap açmanızı ve kuponları sorgulamanızı sağlayan bir program
 # Olası hatalar
 ### requests modülü yok 
 cmd ekranına (konsola) ``pip install requests``, ``pip3 install requests`` veya ``python -m pip install requests`` yazabilirsiniz. Eğer üçüde işe yaramıyor ise [buradan] dosyayı indirip çalıştırmanız yeterli olacaktır.
+### Python bulunamad
+bu hatanın sebebi Microsoft store üzerinden pythonu indirmemeniz. Eğer indirdiğiniz halde aynı sorun devam ediyor ise. Windows tuşu + %AppData%/Local/Programs/Python/python.exe UYGULAMANIN_KURULU_OLDUĞU_DİZİN/main.py yazarak çalıştırabilirsiniz.
+### pip bulunamadı
+https://bootstrap.pypa.io/get-pip.py dosyasını indirin ve çalıştırın.
 
 
 # Sorunum var
