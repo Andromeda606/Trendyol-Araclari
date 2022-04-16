@@ -4,7 +4,8 @@ Python ile yazılmış Trendyol araçları
 # Bu tam olarak ne?
 Basitçe, hesap açmanızı ve kuponları sorgulamanızı sağlayan ücretsiz bir program.
 
-
+# Güncelleme
+Artık onaysız hesap açılamıyor, bu yüzden onay sistemi ekledim.
 
 # Nasıl çalışır?
 
