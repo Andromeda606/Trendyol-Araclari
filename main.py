@@ -87,13 +87,12 @@ def openaccount():
 
             for x in range(10):
                 while True:
-                    mail = settings.random_str(6) + "@gmail.com"
-                    status = settings.new_account(mail, passw)
+                    status = settings.new_account(None, passw)
                     if status == "IPCHANGE":
                         print("IP Bloklaması yaşandı, lütfen ip değiştirin. 2 saniye sonra tekrar denenecek.")
                         time.sleep(2)
                     else:
-                        print(mail + " hesabı Açıldı!")
+                        print("Rastgele hesap Açıldı!")
                         break
             print("Bizi tercih ettiğiniz için teşekkürler, bütün hesaplar açıldı!")
             start()
@@ -142,10 +141,19 @@ def start():
     print("1- Hesap Açma")
     print("2- Kupon Sorgulama")
     print("3- Koleksiyon Kaydedici")
+    print()
+
+
 
     while True:
         status = input()
         if status == "1":
+            print("Yeni güncelleme dolayısı ile trendyol doğrulama kodu getirdi.")
+            print("Bu yüzden ne yazıkki gmail hesapları açılamıyor.")
+            print("Hesaplar artık 1secmail kullanılarak açılacak.")
+            print("Daha fazla temp mail isterseniz fork yapabilirsiniz.")
+            print()
+            print()
             openaccount()
         elif status == "2":
             getcoupon()
